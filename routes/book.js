@@ -1,35 +1,43 @@
-const { query } = require('express');
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
 const { pool } = require('../modules/mysql-conn');
 
-router.get('/list', async (req, res) => {
-	const connect = await pool.getConnection();
-	const r = await connect.query('SELECT * FROM books');
-	connect.release();
-	for(let v of r[0]) v.wdate = moment(v.wdate).format('YYYY-MM-DD');
-	const pug = {
-		file: 'book-list',
-		title: '도서 리스트',
-		titleSub: '고전도서 리스트',
-		lists: r[0]
+router.get(['/', '/list'], async (req, res, next) => {
+	let sql = 'SELECT * FROM books ORDER BY id DESC LIMIT 0, 5';
+	let connect, r;
+	try {
+		connect = await pool.getConnection();
+		r = await connect.query(sql);
+		connect.release();
+
+		for(let v of r[0]) v.wdate = moment(v.wdate).format('YYYY-MM-DD');
+		const pug = {
+			file: 'book-list',
+			title: '도서 리스트',
+			titleSub: '고전도서 리스트',
+			lists: r[0]
+		}
+		res.render('book/list', pug);
 	}
-	res.render('book/list', pug);
+	catch(e) {
+		connect.release();
+		next(e);
+	}
 });
 
-router.get('/write', (req,res) => {
+router.get('/write', (req, res, next) => {
 	const pug = {
 		file: 'book-write',
 		title: '도서 작성',
-		titleSub: '등록할 도서를 작성하세요'
+		titleSub: '등록할 도서를 작성하세요.',
 	}
 	res.render('book/write', pug);
 });
 
-router.post('/save', async (req, res) => {
-const { title, wrter, wdate, content } = req.body;
-	const values = [title, wrter, wdate, content];
+router.post('/save', async (req, res, next) => {
+	const { title, writer, wdate, content } = req.body;
+	const values = [title, writer, wdate, content];
 	const sql = 'INSERT INTO books SET title=?, writer=?, wdate=?, content=?';
 
 	const connect = await pool.getConnection();
@@ -37,14 +45,21 @@ const { title, wrter, wdate, content } = req.body;
 	connect.release();
 
 	res.redirect('/book/list');
-
 });
+
 
 module.exports = router;
 
 
 
-//app.post('/book/save')
+
+
+
+
+
+
+
+
 
 
 /*
