@@ -1,12 +1,11 @@
 @use './color.scss';
 
-
-html,body {
-	color:color.$defColor;
+html, body {
+	color: color.$defColor;
 	font-size: 16px;
 }
 
-ul, li, p ,div,form, h1, h2, h3, h4, h5, header, footer, section, aside, article, nav {
+ul, li, p, div, form, h1, h2, h3, h4, h5, header, footer, section, aside, article, nav {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -17,10 +16,9 @@ a:link:not(.btn), a:visited:not(.btn), a:active:not(.btn), a:hover:not(.btn) {
 }
 
 
-
-header.header-wrapper{
+header.header-wrapper {
 	user-select: none;
-	background-color:color.$defColor;
+	background-color: color.$defColor;
 	display: flex;
 	color: color.$activeColor;
 	align-items: center;
@@ -31,7 +29,7 @@ header.header-wrapper{
 	.navi-wrapper {
 		display: flex;
 		align-items: center;
-		.navi{
+		.navi {
 			padding: 1em;
 		}
 		.navi.active {
@@ -43,7 +41,9 @@ header.header-wrapper{
 .title-bar {
 	margin: 1em auto;
 	small {
-		color:color.$lightColor;
+		color: color.$lightColor;
 		margin-left: 1em;
 	}
 }
+
+

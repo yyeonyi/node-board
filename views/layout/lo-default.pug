@@ -4,12 +4,11 @@ html(lang="ko")
 		meta(charset="UTF-8")
 		meta(name="viewport" content="width=device-width, initial-scale=1.0")
 		include ../include/inc-style.pug
-		link(rel="stylesheet", href=`/css/${file ? file : 'index'}.css`)
+		link(rel="stylesheet" href=`/css/${file ? file : 'index'}.css`)
 		include ../include/inc-script.pug
 	body
 		header.header-wrapper
 			.logo LOGO
-			.navi-wrapper
 			include ../include/inc-nav.pug
 		.container
 			include ../include/inc-titlebar.pug

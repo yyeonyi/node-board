@@ -1,6 +1,6 @@
 extends ../layout/lo-default.pug
 block content
-	table.table.table-hover.text-hover.list-table
+	table.table.table-hover.text-center.list-table
 		thead.thead-dark
 			tr
 				th 번호
@@ -8,11 +8,20 @@ block content
 				th 저자
 				th 발행일
 				th 내용
+				th 관리
 		tbody
 			each v in lists
 				tr
 					td= v.id
-					td.text-left= v.title
-					td=v.writer
-					td=v.wdate
+					td.text-left
+						a(href=`/book/view/${v.id}`)= v.title
+					td= v.writer
+					td= v.wdate
 					td.text-left= v.content
+						if v.icon
+							span.icon= v.icon
+					td
+						a(href=`javascript: onUpdate(${v.id});`)
+							i.fa.fa-edit
+						a(href=`javascript: onDelete(${v.id});`).ml-2
+							i.fa.fa-trash-alt
