@@ -6,3 +6,8 @@
 -- SELECT * FROM books  ORDER BY id DESC;
 -- SELECT * FROM books WHERE id=3;
 -- SELECT * FROM books ORDER BY id DESC LIMIT 0, 3;
+-- SELECT count(*) FROM books;
+
+-- Pager쿼리
+-- SELECT * FROM books ORDER BY id DESC; 
+SELECT * FROM books ORDER BY id DESC LIMIT 0, 3;
