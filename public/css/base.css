@@ -17,7 +17,7 @@ header.header-wrapper {
   user-select: none;
   background-color: #222;
   display: flex;
-  color: #aa10b8;
+  color: #fae9ce;
   align-items: center;
   justify-content: space-between;
 }
@@ -32,7 +32,7 @@ header.header-wrapper .navi-wrapper .navi {
   padding: 1em;
 }
 header.header-wrapper .navi-wrapper .navi.active {
-  background-color: #060e52;
+  background-color: #661e1e;
 }
 
 .title-bar {
