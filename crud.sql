@@ -10,4 +10,12 @@
 
 -- Pager쿼리
 -- SELECT * FROM books ORDER BY id DESC; 
-SELECT * FROM books ORDER BY id DESC LIMIT 0, 3;
+-- SELECT * FROM books ORDER BY id DESC LIMIT 0, 3;
+-- INSERT INTO users SET
+-- userid='yyeonyi',
+-- userpw='0000',
+-- username='김연이',
+-- email='yl924@naver.com';
+-- SELECT * FROM users WHERE userid='yyeonyi';
+SELECT * FROM users WHERE userid LIKE'%yye%';
+
