@@ -9,7 +9,6 @@ const session = require('express-session');
 /** 라우터 등록 **********************/
 
 
-
 /** 서버실행 **********************/
 app.listen(3000, () => {
 	console.log('=====================');
@@ -25,18 +24,16 @@ app.locals.pretty = true;
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-//app.set('trust proxy', 1);
-
+// app.set('trust proxy', 1);
 app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
+	secret: 'keyboard cat',
+	resave: false,
+	saveUninitialized: true,
+	cookie: { secure: true }
 }))
 
 /** 라우터설정 **********************/
 app.use('/', express.static(path.join(__dirname, './public')));
-
 
 
 /** 에러 처리 **********************/
